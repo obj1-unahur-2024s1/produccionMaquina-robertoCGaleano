@@ -1,0 +1,54 @@
+import registroProduccion.*
+
+test "algun dia se produjo 49" {
+	registroProduccion.agregarAlRegistroLista([43,18,49,62,33,39])
+	assert.that(registroProduccion.algunDiaSeProdujo(49))
+}
+
+test "algun dia se produjo 52" {
+	registroProduccion.agregarAlRegistroLista([43,18,49,62,33,39])
+	assert.notThat(registroProduccion.algunDiaSeProdujo(52))
+}
+
+test "maximo valor de produccion" {
+	registroProduccion.agregarAlRegistroLista([43,18,49,62,33,39])
+	assert.equals(62, registroProduccion.maximoValorDeProduccion())
+}
+
+test "valores de produccion pares" {
+	registroProduccion.agregarAlRegistroLista([43,18,49,62,33,39])
+	assert.equals([18,62], registroProduccion.valoresDeProduccionPares())
+}
+
+test "la produccion de cada dia se encuentra entre 10 y 100" {
+	registroProduccion.agregarAlRegistroLista([43,18,49,62,33,39])
+	assert.that(registroProduccion.produccionEsAcotada(10,100))
+}
+test "la produccion de cada dia se encuentra entre 20 y 100" {
+	registroProduccion.agregarAlRegistroLista([43,18,49,62,33,39])
+	assert.notThat(registroProduccion.produccionEsAcotada(20,100))
+}
+test "registros superiores a 35" {
+	registroProduccion.agregarAlRegistroLista([43,18,49,62,33,39])
+	assert.equals([43,49,62,39], registroProduccion.produccionesSuperioresA(35))
+}
+
+test "registros sumandole 5 a cada dia" {
+	registroProduccion.agregarAlRegistroLista([43,18,49,62,33,39])
+	assert.equals([48,23,54,67,38,44], registroProduccion.produccionesSumando(5))
+}
+
+test "registro suma total de produccion" {
+	registroProduccion.agregarAlRegistroLista([43,18,49,62,33,39])
+	assert.equals(244, registroProduccion.totalProducido())
+}
+
+test "registro del ultimo valor producido" {
+	registroProduccion.agregarAlRegistroLista([43,18,49,62,33,39])
+	assert.equals(39, registroProduccion.ultimoValorDeProduccion())
+}
+
+test "registro de cantidad de producciones mayores al primer dia" {
+	registroProduccion.agregarAlRegistroLista([43,18,49,62,33,39])
+	assert.equals(2, registroProduccion.cantidadProduccionesMayorALaPrimera())
+}
